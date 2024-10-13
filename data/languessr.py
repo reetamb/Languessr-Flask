@@ -37,7 +37,7 @@ prearticulators = "ʼ ʰ ʷ ʱ ˀ"
 def initialize():
     global languages, target, data, langs
 
-    with open("languages.json", 'r', encoding='utf-8') as file:
+    with open("data/languages.json", 'r', encoding='utf-8') as file:
         langs = json.load(file)
 
     languages = langs.keys()
@@ -47,7 +47,7 @@ def initialize():
 
 def allUniquePhonemes():
     classification = dict()
-    with open("phonemes.json", 'w+', encoding='utf-8') as write:
+    with open("data/phonemes.json", 'w+', encoding='utf-8') as write:
         for lang in languages:
             index = langs.get(lang)
             phones = index.get("phonemes")

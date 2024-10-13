@@ -2,24 +2,81 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
   <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 <body>
-  <h1>Languessr</h1>
-  <h3>guess where the language with the following phonemic inventory is spoken:</h2>
-  <p>{{ phonemes }}</p>
-  <div>
-    <button id="reveal" class="btn">Show Answer</button>
-    <button class="btn" onclick="window.location.href='/home'">Restart</button>
-  </div>
-  <!-- jQuery -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script>
-    $("#reveal").on('click', function() {
-        $(".answer").css("display", "block")
-    });
-  </script>
-  <p class="answer">The correct answer is {{ language }}!</p>
-  <p class="answer">It is spoken in {{ location }}.</p>
+  <h1><span class="text-gradient">Languessr</span></h1>
+	<div id="all">
+		<div id="left-half">
+			<p class="instructions">
+				A mystery language has these phonemes:
+				<button id="start" class="legal-button" onclick="">Next Round</button>
+				<button id="new" class="legal-button">New Game</button>
+				<br/>
+			</p>
+			<div id="tables">
+				<table id="consonants"><tr>
+						<td>Consonants</td> <td>Labial</td> <td>Coronal</td> <td>Retroflex</td> <td>Palatal</td> <td>Velar</td> <td>Laryngeal</td>
+					</tr> <tr>
+						<td>Nasal</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+					</tr> <tr>
+						<td>Plosive</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+					</tr> <tr>
+						<td>Affricate</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+					</tr> <tr>
+						<td>Fricative</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+					</tr> <tr>
+						<td>Liquid</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+					</tr> <tr>
+						<td>Non-Pulmonic</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+					</tr>
+				</table>
+				<br>
+				<div id="vocoids">
+					<table id="vowels"><tr>
+							<td>Vowels</td> <td>Front</td> <td>Central</td> <td>Back</td>
+						</tr> <tr>
+							<td>Close</td> <td></td> <td></td> <td></td>
+						</tr> <tr>
+							<td>Close-Mid</td> <td></td> <td></td> <td></td>
+						</tr> <tr>
+							<td>Open-Mid</td> <td></td> <td></td> <td></td>
+						</tr> <tr>
+							<td>Open</td> <td></td> <td></td> <td></td>
+						</tr>
+					</table>
+					<br>
+					<table id="tones"><tr>
+							<td>Level Tones</td><td>Contour Tones</td>
+						</tr> <tr>
+							<td style="height:30px;"></td> <td></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="right-half">
+			<p class="instructions">
+				Guess where on the the language is spoken:
+				<span id="righties">
+					<input id="preguess" placeholder="Or guess its name:"/>
+					<button id="reveal">Guess</button>
+				</span>
+				<br/>
+			</p>
+			<div id="map"></div>
+			<br>
+			<p id="answer"></p>
+			<p id="result"></p>
+			<p id="score">Round 1 - Score: 0</p>
+		</div>
+	</div>
+	<p id="cite" title="
+	Moran, Steven & McCloy, Daniel (eds.) 2019.
+PHOIBLE 2.0.
+Jena: Max Planck Institute for the Science of Human History.
+(Available online at http://phoible.org, Accessed on 2023-05-25.)
+	">Site by Reetam - Data from PHOIBLE</p>
+	<script src="/static/scripts/test.js" type="module"></script>
 </body>

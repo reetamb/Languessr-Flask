@@ -3,7 +3,7 @@ import json
 
 langs = dict()
 
-with open('phoible.csv', 'r', encoding='utf-8') as file, open('locations.csv', 'r', encoding='utf-8') as file2:
+with open('raw/phoible.csv', 'r', encoding='utf-8') as file, open('raw/locations.csv', 'r', encoding='utf-8') as file2:
     data = file.readlines()
     rows = data[1:]
     locs = file2.readlines()
@@ -18,11 +18,11 @@ with open('phoible.csv', 'r', encoding='utf-8') as file, open('locations.csv', '
         phoneme = cells[6]
         if str(phoneme)[0] in ["0", "1", "2", "3"]:
             phoneme = cells[7]
-        # if phoneme == "|":
-        #     continue
-        # elif ("|") in phoneme:
-        #     halves = phoneme.split("|")
-        #     phoneme = halves[0]
+        if phoneme == "|":
+            continue
+        elif ("|") in phoneme:
+            halves = phoneme.split("|")
+            phoneme = halves[0]
         if name not in langs.keys():
             info = dict()
             info["id"] = id

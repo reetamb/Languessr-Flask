@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, jsonify
 import data.languessr as languessr
 
 app = Flask(__name__)
@@ -7,7 +7,14 @@ app = Flask(__name__)
 @app.route("/home")
 def home():
     languessr.initialize()
-    return render_template("home.html", phonemes=languessr.phonemes(), language=languessr.language(), location=languessr.location())
+    ph = languessr.phonemes()
+    ln = languessr.language()
+    lc = languessr.location()
+    return render_template("home.html", phonemes=ph, language=ln, location=lc)
+
+@app.route("/lang")
+def data():
+    return jsonify({"phonemes": languessr.phonemes(), "language": languessr.language(), "location": languessr.location()})
 
 if __name__ == "__main__":
     import os
